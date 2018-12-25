@@ -19,18 +19,18 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       selectInput("variable_x", "X Variable:",
-                  c("Largo de Sépalo" = "Sepal.Length",
-                    "Ancho de Sépalo" = "Sepal.Width",
-                    "Largo de Pétalo" = "Petal.Length",
-                    "Ancho de Pétalo" = "Petal.Width"),
+                  c("Sepal Lenght" = "Sepal.Length",
+                    "Sepal Width" = "Sepal.Width",
+                    "Petal Length" = "Petal.Length",
+                    "Petal Width" = "Petal.Width"),
                   selected = "Petal.Length"),
       selectInput("variable_y", "Y Variable:",
-                  c("Largo de Sépalo" = "Sepal.Length",
-                    "Ancho de Sépalo" = "Sepal.Width", 
-                    "Largo de Pétalo" = "Petal.Length",
-                    "Ancho de Pétalo" = "Petal.Width"),
+                  c("Petal Length" = "Sepal.Length",
+                    "Petal Width" = "Sepal.Width", 
+                    "Sepal Length" = "Petal.Length",
+                    "Sepal Width" = "Petal.Width"),
                   selected = "Petal.Width"),
-      sliderInput("size_x", "Select the size of x variable", 0, 7.9, 4),
+      sliderInput("size_x", "Select the size of X Variable", 0, 7.9, 4),
       checkboxInput("draw_loess", "Draw LOESS", value = TRUE),
       checkboxInput("draw_lm", "Draw LM", value = TRUE)                   
       #submitButton("Dibujar")
@@ -38,11 +38,32 @@ shinyUI(fluidPage(
     
     # Show a plot with the models
     mainPanel(
-       plotOutput("dispersionPlot"),
-       h3("Predicted size from LOESS model:"), 
-       textOutput("pred1"),
-       h3("Predicted size from LM model:"),
-       textOutput("pred2")
+       # plotOutput("dispersionPlot"),
+       # h3("Predicted size from LOESS model:"), 
+       # textOutput("pred1"),
+       # h3("Predicted size from LM model:"),
+       # textOutput("pred2")
+      tabsetPanel(type = "tabs",
+                  tabPanel("Plot", plotOutput("dispersionPlot"), 
+                                   h3("Predicted size from LOESS model:"),
+                                   textOutput("pred1"),
+                                   h3("Predicted size from LM model:"),
+                                   textOutput("pred2")),
+                  tabPanel("Documentation", h3("APP DOCUMENTATION"),
+                                            h4("X Variable"),
+                                            p("Here you can select de X variable from iris dataset for create a model"),
+                                            h4("Y Variable"),
+                                            p("Here you can select de Y variable from iris dataset for create a model"),
+                                            h4("Select the size of X Variable"),
+                                            h4("Draw LOESS"),
+                                            h4("Draw LM"))
+      )
     )
   )
 ))
+
+tabsetPanel(type = "tabs",
+            tabPanel("Plot", plotOutput("plot")),
+            tabPanel("Summary", verbatimTextOutput("summary")),
+            tabPanel("Table", tableOutput("table"))
+)
