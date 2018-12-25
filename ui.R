@@ -51,13 +51,16 @@ shinyUI(fluidPage(
                                    textOutput("pred2")),
                   tabPanel("Documentation", h3("APP DOCUMENTATION"),
                                             h4("X Variable"),
-                                            p("Here you can select de X variable from iris dataset for create a model"),
+                                            p("Here you can select the X variable from iris dataset for create a model."),
                                             h4("Y Variable"),
-                                            p("Here you can select de Y variable from iris dataset for create a model"),
+                                            p("Here you can select the Y variable from iris dataset for create a model."),
                                             h4("Select the size of X Variable"),
+                                            p("Here you can select the value o X Variable from iris dataset to obtain a prediction."),
                                             h4("Draw LOESS"),
-                                            h4("Draw LM"))
-      )
+                                            p("If you want to draw the loess model, click here."),
+                                            h4("Draw LM"),
+                                            p("If you want to draw the linear model, click here."))
+      )                                     
     )
   )
 ))
