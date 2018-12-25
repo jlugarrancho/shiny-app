@@ -59,7 +59,10 @@ shinyUI(fluidPage(
                                             h4("Draw LOESS"),
                                             p("If you want to draw the loess model, click here."),
                                             h4("Draw LM"),
-                                            p("If you want to draw the linear model, click here."))
+                                            p("If you want to draw the lineal model, click here."),
+                                            h4("GitHub Repository"),
+                                            helpText(a("https://github.com/jlugarrancho/shiny-app", href="https://github.com/jlugarrancho/shiny-app")
+                           ))
       )                                     
     )
   )
